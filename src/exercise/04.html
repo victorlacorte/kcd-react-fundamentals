@@ -11,10 +11,63 @@
 
     // 🐨 use that function in place of the divs below with:
     // 💰 {message({children: 'Hello World'})} {message({children: 'Goodbye World'})}
+    // const element = (
+    //   <div className="container">
+    //     <div className="message">Hello World</div>
+    //     <div className="message">Goodbye World</div>
+    //   </div>
+    // )
+
+    // const message = (props) => <div className="message" {...props} />
+
+    // const element = (
+    //   <div className="container">
+    //     {message({ children: "Hello World" })}
+    //     {message({ children: "Goodbye World" })}
+    //   </div>
+    // )
+
+    // const element = (
+    //   <div className="container">
+    //     {React.createElement(message, null, 'Hello World')}
+    //     {React.createElement(message, null, 'Goodbye World')}
+    //   </div>
+    // )
+
+    // const Message = (props) => <div className="message" {...props} />
+
+    // const element = (
+    //   <div className="container">
+    //     <Message>{"Hello World"}</Message>
+    //     <Message>{"Goodbye World"}</Message>
+    //   </div>
+    // )
+
+    function Message({subject, greeting}) {
+      return (
+        <div className="message">
+          {greeting}, {subject}
+        </div>
+      )
+    }
+
+    const PropTypes = {
+      string(props, propName, componentName) {
+        if (typeof props[propName] !== 'string') {
+          return new Error('Some useful error message here')
+        }
+      },
+    }
+
+    Message.propTypes = {
+      subject: PropTypes.string,
+      greeting: PropTypes.string,
+    }
+
     const element = (
       <div className="container">
-        <div className="message">Hello World</div>
-        <div className="message">Goodbye World</div>
+        <Message subject={1} greeting="Hello" />
+        <Message subject="World" greeting="Goodbye" />
       </div>
     )
 

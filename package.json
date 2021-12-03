@@ -39,8 +39,9 @@
     "test:exercises": "npm run test -- testing.*exercises\\/ --onlyChanged",
     "setup": "node setup",
     "lint": "eslint .",
-    "format": "prettier --write \"./src\"",
-    "validate": "echo validated"
+    "validate": "echo validated",
+    "prettier": "prettier ./src --ignore-unknown",
+    "format": "npm run prettier -- --write"
   },
   "husky": {
     "hooks": {
