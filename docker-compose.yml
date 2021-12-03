@@ -3,7 +3,12 @@ version: '3'
 services:
   node:
     build: .
+    command: bash -c "rm -fr /usr/local/app/node_modules/* && npm start"
     volumes:
-      - ./src:/app/src
+      - .:/usr/local/app
+      - exclude:/usr/local/app/node_modules
     ports:
       - '3000:3000'
+
+volumes:
+  exclude:

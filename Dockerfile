@@ -1,7 +1,12 @@
 FROM node:16
 
-WORKDIR /app
-COPY . .
+WORKDIR /usr/local
+COPY package*.json setup.js ./
+COPY scripts ./scripts
 RUN NO_EMAIL_AUTOFILL=true node setup
+ENV PATH=/usr/local/node_modules/.bin:$PATH
 
-CMD ["npm", "start"]
+WORKDIR /usr/local/app
+COPY --chown=node:node . ./
+
+USER node
